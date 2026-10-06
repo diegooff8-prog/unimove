@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UniMove - Transporte Universitario Accesible</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header role="banner">
+    <h1>UniMove - Transporte Universitario</h1>
+    <p>Reserva de asientos y consulta de rutas en tiempo real</p>
+  </header>
+
+  <main role="main">
+    
+    <!-- Sección 1: Selección de Ruta -->
+    <section class="card" aria-labelledby="heading-rutas">
+      <h2 id="heading-rutas">1. Consultar Rutas</h2>
+      <div class="form-group">
+        <label for="selectRuta">Selecciona tu línea de transporte:</label>
+        <select id="selectRuta" aria-required="true">
+          <option value="">-- Elige una ruta --</option>
+          <option value="r1">Ruta 1: Campus Central → Campus Norte</option>
+          <option value="r2">Ruta 2: Campus Norte → Facultad de Medicina</option>
+          <option value="r3">Ruta 3: Estación Metro → Campus Central</option>
+        </select>
+      </div>
+
+      <div id="infoRuta" aria-live="polite">
+        <p><strong>Estado de la unidad:</strong> <span id="estadoTexto">Selecciona una ruta para consultar.</span></p>
+        <div id="badgeEstado" class="status-badge">En espera</div>
+      </div>
+    </section>
+
+    <!-- Sección 2: Reserva de Asiento -->
+    <section class="card" aria-labelledby="heading-reserva">
+      <h2 id="heading-reserva">2. Reservar Asiento</h2>
+      <form id="formReserva" novalidate>
+        <div class="form-group">
+  <label for="inputMatricula">Código de Estudiante:</label>
+  <input 
+    type="text" 
+    id="inputMatricula" 
+    placeholder="Ej. 219876543" 
+    maxlength="9"
+    inputmode="numeric"
+    required 
+    aria-describedby="errMatricula"
+  >
+  <span id="errMatricula" class="error-text" role="alert">
+    El código debe contener exactamente 9 dígitos numéricos.
+  </span>
+</div>
+
+        <div class="form-group">
+          <label for="selectHora">Horario de Salida:</label>
+          <select id="selectHora" required aria-describedby="errHora">
+            <option value="">-- Selecciona horario --</option>
+            <option value="07:00">07:00 AM</option>
+            <option value="08:00">08:00 AM</option>
+            <option value="13:00">01:00 PM</option>
+            <option value="18:00">06:00 PM</option>
+          </select>
+          <span id="errHora" class="error-text" role="alert">Por favor selecciona un horario.</span>
+        </div>
+
+        <button type="submit" class="btn-submit">Confirmar Reserva</button>
+      </form>
+    </section>
+
+    <!-- Sección 3: Pase Digital de Abordaje -->
+    <section class="card full-width" aria-labelledby="heading-pase">
+      <h2 id="heading-pase">3. Mi Pase Digital</h2>
+      <div id="noPassText">Aún no has generado ninguna reserva.</div>
+      
+      <div id="ticketPass" role="region" aria-live="assertive">
+        <h3 style="color: var(--success);">¡Reserva Confirmada con Éxito!</h3>
+        <p id="detallesPase"></p>
+        <!-- POR ESTO: -->
+        <img 
+        id="qrCodeImage" 
+        src="" 
+        alt="Código QR con los datos de tu reserva" 
+        style="display: none; margin: 1rem auto; width: 160px; height: 160px; border-radius: 8px;"
+        >
+        <p><small>Muestra este código al chofer al momento de abordar la unidad.</small></p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

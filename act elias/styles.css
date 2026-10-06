@@ -1,0 +1,140 @@
+:root {
+  /* Contraste > 4.5:1 exigido por WCAG 2.2 AA */
+  --primary: #004d99;
+  --primary-hover: #003366;
+  --bg-main: #f8f9fa;
+  --card-bg: #ffffff;
+  --text-main: #212529;
+  --text-muted: #545454;
+  --success: #1e7e34;
+  --error: #d32f2f;
+  --focus-outline: #ffbf47;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: var(--text-main);
+  background-color: var(--bg-main);
+  padding: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Indicador de foco visible para teclado */
+:focus-visible {
+  outline: 4px solid var(--focus-outline);
+  outline-offset: 3px;
+}
+
+header {
+  background-color: var(--primary);
+  color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+main {
+  display: grid;
+  gap: 2rem;
+}
+
+.card {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border: 1px solid #e0e0e0;
+}
+
+h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+select, input, button {
+  width: 100%;
+  padding: 0.85rem;
+  font-size: 1rem;
+  border: 2px solid #6c757d;
+  border-radius: 6px;
+  background-color: #ffffff;
+}
+
+.btn-submit {
+  background-color: var(--primary);
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  background-color: var(--primary-hover);
+}
+
+.error-text {
+  color: var(--error);
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-top: 0.4rem;
+  display: none;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: #e2e3e5;
+  color: var(--text-muted);
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+#ticketPass {
+  display: none;
+  background-color: #e8f5e9;
+  border: 2px dashed var(--success);
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.qr-placeholder {
+  width: 140px;
+  height: 140px;
+  background: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem auto;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+@media (min-width: 768px) {
+  main { grid-template-columns: 1fr 1fr; }
+  .full-width { grid-column: span 2; }
+}
